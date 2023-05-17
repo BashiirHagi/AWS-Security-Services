@@ -1,12 +1,6 @@
 # Macie service for sensitive data discovery 
 
- 
- 
-
 # Test S3 bucket 
-
- 
- 
 
 resource "aws_kms_key" "S3_key" { 
 
@@ -20,9 +14,6 @@ deletion_window_in_days = 30
 
 } 
 
- 
- 
-
 resource "aws_s3_bucket" "test_bucket" { 
 
 #checkov:skip=CKV2_AWS_6:public access block not required  
@@ -35,34 +26,18 @@ resource "aws_s3_bucket" "test_bucket" {
 
 #checkov:skip=CKV_AWS_18:Logging not required at this time 
 
- 
- 
-
 bucket = "macie-sample-data" 
-
- 
- 
 
 versioning { 
 
 enabled = true 
 
 } 
-
- 
- 
-
 } 
-
- 
- 
 
 resource "aws_s3_bucket_object" "test_data" { 
 
 #checkov:skip=CKV_AWS_186:CMK encryption is not required at this time 
-
- 
- 
 
 bucket = aws_s3_bucket.test_bucket.id 
 
@@ -70,20 +45,11 @@ key = "sample-data.csv"
 
 source = "${path.cwd}/macie-data/sample-data.csv" 
 
- 
- 
-
 } 
-
- 
- 
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "test_sse" { 
 
 bucket = aws_s3_bucket.test_bucket.id 
-
- 
- 
 
 rule { 
 
@@ -100,8 +66,6 @@ sse_algorithm = "aws:kms"
 } 
 
  
- 
-
 resource "aws_kms_key" "logs_S3_key" { 
 
 description = "Key for S3 encryption" 
@@ -113,9 +77,6 @@ enable_key_rotation = true
 deletion_window_in_days = 30 
 
 } 
-
- 
- 
 
 resource "aws_s3_bucket" "log_bucket" { 
 
@@ -129,25 +90,13 @@ resource "aws_s3_bucket" "log_bucket" {
 
 #checkov:skip=CKV_AWS_144:cross-region replication not required 
 
- 
- 
-
 bucket = "macie-logs" 
 
- 
- 
-
 } 
-
- 
- 
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "logs_sse" { 
 
 bucket = aws_s3_bucket.log_bucket.id 
-
- 
- 
 
 rule { 
 
@@ -163,9 +112,6 @@ sse_algorithm = "aws:kms"
 
 } 
 
- 
- 
-
 resource "aws_s3_bucket_logging" "log_bucket" { 
 
 bucket = aws_s3_bucket.log_bucket.id 
@@ -176,13 +122,7 @@ target_prefix = "log/"
 
 } 
 
- 
- 
-
 # Macie discovery job for S3 bucket data  
-
- 
- 
 
 resource "aws_macie2_classification_job" "macie_job" { 
 
