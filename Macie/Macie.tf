@@ -22,9 +22,7 @@ resource "aws_s3_bucket" "test_bucket" {
 
 #checkov:skip=CKV2_AWS_61:Lifecycle not needed 
 
-#checkov:skip=CKV_AWS_144:cross-region replication not required 
-
-#checkov:skip=CKV_AWS_18:Logging not required at this time 
+#checkov:skip=CKV_AWS_144:cross-region replication not required  
 
 bucket = "macie-sample-data" 
 
