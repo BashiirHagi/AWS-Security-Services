@@ -2,7 +2,7 @@
 
 Provisioned S3 bucket Macie resources using terraform in AWS
 
-Created a macie classification job to peform security scans on the sample data in the S3 buckes on a daily basis
+Created a macie classification job to peform security scans on the sample data on a daily basis
 
 Provisioned secret manager secrets to store environment credentials in AWS
 
