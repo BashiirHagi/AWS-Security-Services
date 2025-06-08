@@ -1,6 +1,6 @@
 # AWS Security Services – Macie & Secrets Manager
 
-This project demonstrates the use of AWS S3 and Macie to perform security scans on sample data at regular intervals to identify sensitive data (e.g. PII) using Terraform (IaC). 
+This project demonstrates the use of AWS S3 and Macie to perform security scans on sample bucket data at regular intervals to identify sensitive data (e.g. PII) using Terraform (IaC). 
 
 ---
 
